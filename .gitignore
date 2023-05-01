@@ -19,3 +19,11 @@ media
 .idea/**/dictionaries
 .idea/**/shelf
 /hardware_store/media/
+
+/.env
+/.idea/.gitignore
+/.idea/django_hardware_store.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
