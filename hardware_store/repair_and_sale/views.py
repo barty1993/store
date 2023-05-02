@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from repair_and_sale.models import Repair, RepairCategory
 from repair_and_sale.serializers import FullRepairSerializer, FullCategorySerializer
-from repair_and_sale.services.common_services import all_objects, query_debugger
+from repair_and_sale.services.common_services import all_objects
 
 
 class ListRepairAPIView(APIView):
