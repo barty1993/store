@@ -1,8 +1,9 @@
 from rest_framework import status
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from repair_and_sale.models import Repair, RepairCategory
-from repair_and_sale.serializers import FullRepairSerializer, FullCategorySerializer
+from repair_and_sale.models import Repair, RepairCategory, UsedItem
+from repair_and_sale.serializers import FullRepairSerializer, FullCategorySerializer, UsedItemsSerializer
 from repair_and_sale.services.common_services import all_objects
 
 
@@ -24,3 +25,8 @@ class ListCategoryAPIView(APIView):
         return Response(data=serializer.data,
                         status=status.HTTP_200_OK
                         )
+
+
+class ListUsedItemsAPIView(ListAPIView):
+    queryset = all_objects(UsedItem.objects)
+    serializer_class = UsedItemsSerializer

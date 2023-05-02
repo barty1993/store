@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from repair_and_sale.models import RepairCategory
+from repair_and_sale.models import RepairCategory, UsedItem
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -23,3 +23,9 @@ class FullCategorySerializer(CategorySerializer):
 
 class FullRepairSerializer(RepairSerializer):
     category = CategorySerializer()
+
+
+class UsedItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UsedItem
+        fields = '__all__'

@@ -19,12 +19,13 @@ from django.contrib import admin
 from django.urls import path
 
 from hardware_store import settings
-from repair_and_sale.views import ListRepairAPIView, ListCategoryAPIView
+from repair_and_sale.views import ListRepairAPIView, ListCategoryAPIView, ListUsedItemsAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/repair/list/', ListRepairAPIView.as_view(), name='list of repair'),
     path('api/category/list/', ListCategoryAPIView.as_view(), name='list of category'),
+    path('api/useditems/list/', ListUsedItemsAPIView.as_view(), name='list of used items'),
 ]
 
 if settings.DEBUG:
