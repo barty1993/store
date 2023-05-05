@@ -29,3 +29,10 @@ class UsedItemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsedItem
         fields = '__all__'
+
+
+class BookItemSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(required=True, max_length=11)
+    message = serializers.CharField(required=True, max_length=100)
+    item_name = serializers.CharField(required=True)
+
