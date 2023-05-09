@@ -7,6 +7,38 @@ services:
       - "8000:8000"
     volumes:
       - ./hardware_store:/hardware_store
+    env_file:
+      - .env
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+
+    depends_on:
+      - database
+
+  database:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  redis:
+    image: redis:7-alpine
+    hostname: redis
+
+  worker:
+    build:
+      context: .
+    hostname: worker
+    entrypoint: celery
+    env_file:
+      - .env
+    command: -A celery_app.app worker -l info
+    volumes:
+      - ./hardware_store:/hardware_store
+    links:
+      - redis
+    depends_on:
+      - redis
+
 

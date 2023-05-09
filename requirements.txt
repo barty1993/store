@@ -25,3 +25,6 @@ sqlparse==0.4.4
 urllib3==1.26.15
 vine==5.0.0
 wcwidth==0.2.6
+
+pip~=23.1.2
+setuptools~=49.2.1

@@ -1,6 +1,8 @@
 import requests
-from hardware_store.celery import app
+
 from hardware_store.settings import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+
+from celery_app import app
 from repair_and_sale.services.data_classes import BookingInfo, CallRequest
 from repair_and_sale.services.utils import create_booking_message, create_call_request_message
 
