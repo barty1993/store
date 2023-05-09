@@ -36,3 +36,7 @@ class BookItemSerializer(serializers.Serializer):
     message = serializers.CharField(required=True, max_length=100)
     item_name = serializers.CharField(required=True)
 
+
+class CallRequestSerializer(serializers.Serializer):
+    phone_number = serializers.CharField(required=True, max_length=11)
+    name = serializers.CharField(required=True, max_length=20)

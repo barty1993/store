@@ -4,9 +4,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from repair_and_sale.models import Repair, RepairCategory, UsedItem
 from repair_and_sale.serializers import FullRepairSerializer, FullCategorySerializer, UsedItemsSerializer, \
-    BookItemSerializer
+    BookItemSerializer, CallRequestSerializer
 from repair_and_sale.services.common_services import all_objects
-from repair_and_sale.tasks import send_message_to_telegram_task
+from repair_and_sale.tasks import book_a_product_telegram_task, call_request_telegram_task
 
 
 class ListRepairAPIView(APIView):
@@ -37,6 +37,14 @@ class BookItemAPIView(APIView):
     def post(self, request):
         serializer = BookItemSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        data = request.data
-        send_message_to_telegram_task.delay(data)
+        book_a_product_telegram_task.delay(request.data)
+        return Response(status=status.HTTP_200_OK)
+
+
+class CallRequestAPIView(APIView):
+
+    def post(self, request):
+        serializer = CallRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        call_request_telegram_task.delay(request.data)
         return Response(status=status.HTTP_200_OK)

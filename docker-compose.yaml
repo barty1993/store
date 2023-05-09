@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  web_app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./hardware_store:/hardware_store
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+

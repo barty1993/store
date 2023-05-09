@@ -20,14 +20,15 @@ from django.urls import path
 
 from hardware_store import settings
 from repair_and_sale.views import ListRepairAPIView, ListCategoryAPIView, ListUsedItemsAPIView, \
-    BookItemAPIView
+    BookItemAPIView, CallRequestAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/repair/list/', ListRepairAPIView.as_view(), name='list of repair'),
     path('api/category/list/', ListCategoryAPIView.as_view(), name='list of category'),
     path('api/useditems/list/', ListUsedItemsAPIView.as_view(), name='list of used items'),
-    path('api/test/', BookItemAPIView.as_view())
+    path('api/bookitem/', BookItemAPIView.as_view(), name='book a item'),
+    path('api/callrequest/', CallRequestAPIView.as_view(), name='call request')
 ]
 
 if settings.DEBUG:
