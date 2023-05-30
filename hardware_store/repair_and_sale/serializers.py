@@ -17,14 +17,6 @@ class RepairSerializer(serializers.Serializer):
     price = serializers.DecimalField(max_digits=8, decimal_places=2)
 
 
-class FullCategorySerializer(CategorySerializer):
-    repairs = RepairSerializer(many=True)
-
-
-class FullRepairSerializer(RepairSerializer):
-    category = CategorySerializer()
-
-
 class UsedItemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsedItem
